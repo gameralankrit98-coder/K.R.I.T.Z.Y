@@ -101,7 +101,7 @@ KRITZY Base Variant — Concept Art
 ![KRITZY Concept Schematic](images/file_00000000eda081f4b53c7736b475505b.png)
 
 
-"KRITZY Base Variant Concept Art" (images/kritzy-base-variant.png)
+"KRITZY Base Variant Concept Art"
 
 The base variant is designed as a stationary, expressive companion robot. It has no locomotion system; instead, its head is intended to rotate left and right and tilt up and down to look around.
 

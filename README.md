@@ -91,3 +91,18 @@ Ideas, suggestions, and technical feedback are welcome through GitHub Issues. He
 📄 License
 
 No license has been specified yet. Until a license is added, please contact the repository owner before reusing or redistributing project materials.
+
+
+
+
+
+
+KRITZY Base Variant — Concept Art
+![KRITZY Concept Schematic](images/file_00000000eda081f4b53c7736b475505b.png)
+
+
+"KRITZY Base Variant Concept Art" (images/kritzy-base-variant.png)
+
+The base variant is designed as a stationary, expressive companion robot. It has no locomotion system; instead, its head is intended to rotate left and right and tilt up and down to look around.
+
+Status: Concept design only. Mechanical implementation and hardware specifications are still under development.

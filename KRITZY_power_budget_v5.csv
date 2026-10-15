@@ -1,0 +1,8 @@
+Rail/load,Calculation,Planning current,Status
+"5V servo rail, 4 servos",4 x 0.65 A assumed SG90-class stall current,2.60 A at 5V,"Assumption only; exact SG90 clones vary, measure/obtain exact datasheet"
+5V servo rail design target,2.60 A x 1.30 margin,3.38 A at 5V,"Target, not verified regulator selection"
+Servo boost input at 3.0V battery,(5.0V x 3.38A)/(3.0V x 0.85 efficiency),6.63 A from battery,Worst-case estimate; efficiency and battery minimum voltage are assumptions
+3.3V logic rail,ESP32-S3 guideline recommends supply >=500mA; set 1A regulator target for peripherals/margin,1.00 A at 3.3V,"Target, not measured load"
+3.3V rail input at 3.0V battery,(3.3V x 1.0A)/(3.0V x 0.85 efficiency),1.29 A from battery,Assumes 85% conversion efficiency
+Combined battery peak estimate,6.63A + 1.29A,7.92 A from battery,"Approximate; excludes speaker peaks, losses beyond assumptions, startup/transients"
+Battery design implication,Use protected pack/cell and wiring rated above measured peak; preliminary design target >=10A discharge capability,~10A or more candidate,Must be checked against actual cell datasheet and protection trip limit

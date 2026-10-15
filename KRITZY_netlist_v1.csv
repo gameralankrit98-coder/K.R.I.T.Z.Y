@@ -1,0 +1,30 @@
+Net,Source,Destinations,Voltage/domain,Notes
+BAT+,J1.1,F1.1,1S LiPo 3.0–4.2V,Protected cell required; battery and connector rated for peak current
+BAT_SW,F1.2/SW1,"U2 VIN+, U3 VIN+, battery divider input",1S LiPo,Fuse/switch chosen after cell and wiring ratings are frozen
+GND,J1.2,"U2 VIN-, U3 GND, ESP32 GND, all module GND, servo GND, USB GND",Common ground,Continuous ground plane; minimize servo return impedance
+5V_SERVO,U2 VOUT+,"J2.2, J3.2, J4.2, J5.2, bulk capacitor +",5.0V high current,Boost module must sustain ≥3.4A at 5V from 1S input; verify full-load conditions
+3V3,U3 VOUT+,"ESP32 3V3, J8.1, J9.1, J10.1, J11.1, touch module supply; amp supply only if module allows",3.3V,Regulator module output ≥1A target; ensure every breakout accepts 3.3V
+SERVO_NECK_PWM,ESP32 GPIO47,J2.3,3.3V logic signal,PWM only; servo V+ from 5V_SERVO
+SERVO_LEFT_PWM,ESP32 GPIO48,J3.3,3.3V logic signal,PWM only
+SERVO_RIGHT_PWM,ESP32 GPIO38,J4.3,3.3V logic signal,PWM only
+SERVO_WAIST_PWM,ESP32 GPIO39,J5.3,3.3V logic signal,PWM only
+USB_D-,USB-C D-,ESP32 GPIO19 via ESD,USB 2.0,Route as pair with D+; connector/footprint exact MPN TBD
+USB_D+,USB-C D+,ESP32 GPIO20 via ESD,USB 2.0,Route as pair with D-; connector/footprint exact MPN TBD
+USB_CC1,USB-C CC1,5.1kΩ to GND,USB-C sink/device,USB-C receptacle CC resistors required
+USB_CC2,USB-C CC2,5.1kΩ to GND,USB-C sink/device,USB-C receptacle CC resistors required
+I2C_SDA,ESP32 GPIO8,"J8 SDA, J9 SDA",3.3V I2C,Ensure one effective pull-up pair and compatible module pullups
+I2C_SCL,ESP32 GPIO9,"J8 SCL, J9 SCL",3.3V I2C,Ensure one effective pull-up pair and compatible module pullups
+IMU_INT,ESP32 GPIO10,J9 INT,3.3V digital,Optional; verify breakout output voltage
+SD_MOSI,ESP32 GPIO13,J10 MOSI,3.3V SPI,Check module pin order
+SD_MISO,ESP32 GPIO12,J10 MISO,3.3V SPI,Check module pin order
+SD_SCK,ESP32 GPIO14,J10 SCK,3.3V SPI,Keep short; local decoupling
+SD_CS,ESP32 GPIO21,J10 CS,3.3V SPI,Firmware chip-select
+MIC_BCLK,ESP32 GPIO5,J11 SCK/BCLK,I2S,Confirm exact INMP441 module labels
+MIC_WS,ESP32 GPIO4,J11 WS/LRCLK,I2S,Confirm exact module labels
+MIC_SD,J11 SD,ESP32 GPIO6,I2S input,Confirm module output pin
+AMP_BCLK,ESP32 GPIO16,J12 BCLK,I2S,Firmware clock configuration must support chosen input/output arrangement
+AMP_LRCLK,ESP32 GPIO15,J12 LRCLK,I2S,Firmware clock configuration must support chosen input/output arrangement
+AMP_DIN,ESP32 GPIO7,J12 DIN,I2S output,Use MAX98357A module supply per its datasheet
+SPK_OUTP/OUTN,J12 amplifier module,J13 speaker +/−,BTL audio,Neither speaker terminal connects to GND
+TOUCH_OUT,J14 OUT,ESP32 GPIO11,3.3V digital,Optional module; confirm output level
+BAT_SENSE,BAT_SW via divider/filter,ESP32 GPIO1 ADC,ADC,Calculate divider for 4.2V max and ESP32 ADC input range

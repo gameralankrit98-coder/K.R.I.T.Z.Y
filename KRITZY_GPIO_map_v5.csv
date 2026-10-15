@@ -1,0 +1,22 @@
+Function,GPIO,Electrical/interface,Status / note
+Native USB D-,GPIO19,USB D-,Reserved if native USB programming is required
+Native USB D+,GPIO20,USB D+,Reserved if native USB programming is required
+I2C SDA,GPIO8,3.3V I2C,Provisional; one effective pull-up pair
+I2C SCL,GPIO9,3.3V I2C,Provisional; one effective pull-up pair
+MPU6050 INT,GPIO10,3.3V digital input,Optional; verify module output level
+Touch pad,GPIO11,Touch-capable input,Optional; confirm selected ESP32-S3 module and layout
+microSD MOSI,GPIO13,3.3V SPI,Provisional
+microSD MISO,GPIO12,3.3V SPI,Provisional
+microSD SCK,GPIO14,3.3V SPI,Keep short; validate pin/firmware assignment
+microSD CS,GPIO21,3.3V SPI,Provisional
+I2S mic BCLK,GPIO5,3.3V I2S,Provisional
+I2S mic WS/LRCLK,GPIO4,3.3V I2S,Provisional
+I2S mic SD,GPIO6,3.3V I2S input,Provisional
+I2S amp BCLK,GPIO16,3.3V I2S,May share clock only if firmware/peripheral setup supports
+I2S amp LRCLK,GPIO15,3.3V I2S,May share clock only if firmware/peripheral setup supports
+I2S amp DIN,GPIO7,3.3V I2S output,Provisional
+Servo neck PWM,GPIO47,3.3V PWM,Verify available on exact module; add optional series resistor
+Servo left arm PWM,GPIO48,3.3V PWM,Verify available on exact module; add optional series resistor
+Servo right arm PWM,GPIO38,3.3V PWM,Verify available on exact module; add optional series resistor
+Servo waist PWM,GPIO39,3.3V PWM,Verify available on exact module; add optional series resistor
+Battery monitor,GPIO1,ADC via divider/filter,Divider must keep ADC input in range; verify calibration and source impedance

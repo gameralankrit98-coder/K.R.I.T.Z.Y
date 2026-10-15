@@ -1,0 +1,18 @@
+Ref/Block,Selection / requirement,Qty,Design status,Notes / validation
+U1,ESP32-S3-WROOM-1 module; freeze exact flash/PSRAM SKU,1,Provisional,Use official module footprint; preserve antenna keepout; expose EN/BOOT/USB
+J1,"USB-C receptacle, USB 2.0 device",1,Provisional,CC1 and CC2 each 5.1k to GND; ESD on D+/D-; confirm connector footprint
+U2,"1-cell Li-ion charger with true power-path, thermal regulation",1,Not frozen,"Select based on charge current, thermal pad, NTC, USB input budget; do not assume TP4056 is load sharing"
+BT1,"Protected 1S LiPo pack, 3.0–4.2V operating envelope",1,Requirement,Cell discharge rating must support measured system peaks; protection board/cell rating to be verified
+U3,"3.3V buck-boost regulator, >=1A output target",1,Not frozen,Battery range crosses 3.3V; choose regulator after input current/thermal check; add datasheet-required caps/inductor
+U4,"5V boost regulator, >=3.4A design output target",1,Not frozen,Based on 4 x assumed 0.65A SG90 stall current + 30% margin; verify exact servo stall current and boost thermal/switch limits
+C_SERVO,Low-ESR bulk capacitance at servo rail,1+,Provisional,Start around 470–1000uF near servo connectors; validate transient droop/ESR with scope
+J_SERVO1..4,"3-pin servo headers: GND, +5V_SERVO, PWM",4,Provisional,Choose connector current rating and copper width for combined rail current
+U5,MAX98357A class-D I2S amplifier or compatible breakout header,1,Provisional,"Exact implementation TBD; BTL outputs go only to speaker, never ground"
+J_SPK,2-pin speaker connector,1,Provisional,Speaker impedance/power rating must match amplifier and enclosure
+J_MIC,"INMP441 module header: 3V3, GND, SCK, WS, SD, L/R",1,Provisional,Module pinout varies; verify module schematic and pull-ups/decoupling
+J_OLED,SSD1306 I2C module header,1,Provisional,Confirm module is 3.3V logic compatible and address; avoid duplicated pull-ups
+J_IMU,MPU6050 module header,1,Provisional,"Confirm exact breakout pinout, regulator and I2C pull-ups; sensor IC availability may vary"
+J_SD,microSD socket or 3.3V SPI module header,1,Provisional,"3.3V-only logic; if breakout has regulator/level shifters, check signal direction and supply range"
+SW1,Battery/system power switch,1,Provisional,Current rating must be suitable for the battery path and startup current
+F1,Input protection / resettable fuse or suitable fuse,1,Not frozen,"Choose after cable, connector, cell and peak-current ratings are known"
+TPx,"Test points: VBAT, 5V_SERVO, 3V3, GND, EN, UART TX/RX",as needed,Required,Add before PCB release

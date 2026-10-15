@@ -1,0 +1,18 @@
+Net,Connects,Notes
+VBUS_5V,USB-C VBUS -> input protection -> charger input,USB-C CC1 and CC2 each 5.1k to GND for sink-only 5V; ESD protect D+/D- if USB data exposed
+GND,"USB-C GND, battery negative, charger ground, regulator grounds, ESP32 GND, module grounds",Use continuous ground plane; keep servo current loop compact and away from mic input/clock
+BAT+,Battery positive -> protection -> system battery node,Battery protection and cell current rating must be selected
+SYS_LOGIC,Charger power-path SYS -> 3V3 buck-boost input,Power-path current limit must cover logic while charging; not servo boost
+VBAT_SERVO,Protected battery node -> dedicated high-current 5V boost input,Separate high-current path; fuse/switch/connector ratings must support calculated peak
+5V_SERVO,5V boost output -> four servo V+ pins; bulk capacitor,Do not power servo V+ from ESP32 3V3. Return servo grounds to power entry/ground plane
+3V3,"3V3 regulator output -> ESP32 module, compatible module headers, mic, OLED/IMU/SD as compatible",Verify every module supply range and logic level; ESP32 guideline recommends supply capacity >=500mA
+USB_D-,USB-C D- -> ESD -> GPIO19,Route differential pair per Espressif recommendations; maintain USB access
+USB_D+,USB-C D+ -> ESD -> GPIO20,Route differential pair per Espressif recommendations; maintain USB access
+I2C_SDA,"GPIO8 -> OLED SDA, MPU6050 SDA",3.3V pull-ups; one effective pair; verify module pull-ups
+I2C_SCL,"GPIO9 -> OLED SCL, MPU6050 SCL",3.3V pull-ups; one effective pair; verify bus capacitance
+SPI_SD,"GPIO13 MOSI, GPIO12 MISO, GPIO14 SCK, GPIO21 CS -> microSD interface",3.3V-only; local decoupling; keep clock short
+I2S_MIC,"GPIO5 BCLK, GPIO4 WS, GPIO6 SD <- INMP441 module",Confirm selected module pin labels and clocking
+I2S_AMP,"GPIO16 BCLK, GPIO15 LRCLK, GPIO7 DIN -> MAX98357A module",Shared clocks with mic only if ESP-IDF configuration supports; verify in firmware
+SERVO_PWM,"GPIO47, GPIO48, GPIO38, GPIO39 -> individual servo signal pins",GPIO is signal only; servo power supplied from 5V_SERVO
+BAT_SENSE,BAT+ -> divider/filter -> GPIO1 ADC,Calculate divider for max fully charged battery 4.2V and ADC limits; optional switched divider to reduce standby drain
+SPK_BTL,MAX98357A OUTP/OUTN -> speaker connector,BTL pair only; neither speaker terminal may connect to GND
